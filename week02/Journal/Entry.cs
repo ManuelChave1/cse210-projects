@@ -9,7 +9,8 @@ public class Entry
    PromptGenerator prompt = new PromptGenerator();
    List<string> _entry = new List<string>();
 
-   string path = @"C:\Users\Manuel Chave\Documents\doc\";
+   //string path = @"C:\Users\Manuel Chave\Documents\doc\";
+
 
 
 
@@ -23,7 +24,7 @@ public class Entry
       string answer = Console.ReadLine();
       _entryText = answer;
 
-      string entries = "Date:" + _data + "- Prompt: " + _promptText + "\n" + _entryText;
+      string  entries = "Date:" + _data + "- Prompt: " + _promptText + "\n" + _entryText;
       _entry.Add(entries);
    }
 
@@ -38,16 +39,19 @@ public class Entry
 
    public void LoadFromAFile(string file)
    {
-      if (File.Exists(path + file))
+      if (File.Exists(file))
       {
-         using (StreamReader sr = new StreamReader(path + file))
-         {
-            string lines;
-            while ((lines = sr.ReadLine()) != null)
-            {
-               Console.WriteLine(lines);
-            }
-         }
+
+         string file_entries = File.ReadAllText(file);
+         Console.WriteLine(file_entries);
+         //using (StreamReader sr = new StreamReader(path + file))
+        // {
+         //   string lines;
+         //   while ((lines = sr.ReadLine()) != null)
+         //   {
+         //      Console.WriteLine(lines);
+        //    }
+        // }
       }
       else
       {
@@ -56,14 +60,15 @@ public class Entry
    }
    public void SaveToAFile(string file)
    {
-
-      using (StreamWriter sw = File.AppendText(path + file))
-      {
-         foreach (var item in _entry)
-         {
-            sw.WriteLine(item);
-         }
-      }
+      string entries = string.Join(Environment.NewLine, _entry);
+      File.WriteAllText(file,entries);
+      //using (StreamWriter sw = File.AppendText(path + file))
+     // {
+      // foreach (var item in _entry)
+      // {
+      //    sw.WriteLine(item);
+      // }
+     // }
    }
 
 }
