@@ -1,6 +1,0 @@
-170 
-
-SimpleGoal:Manuel,manuel1,10,True
-EternalGoal:Sanine,Sanine2,20
-ChecklistGoal:Rita,Rita3,130,3,3,100
-SimpleGoal:mario,Mario4,50,True
